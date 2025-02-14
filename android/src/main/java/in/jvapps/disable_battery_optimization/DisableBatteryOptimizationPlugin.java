@@ -53,6 +53,8 @@ public class DisableBatteryOptimizationPlugin implements FlutterPlugin, Activity
     // them functionally equivalent. Only one of onAttachedToEngine or registerWith will be called
     // depending on the user's project. onAttachedToEngine or registerWith must both be defined
     // in the same class.
+
+    // Commenting this method
     // public static void registerWith(PluginRegistry.Registrar registrar) {
     //     final MethodChannel channel = new MethodChannel(registrar.messenger(), CHANNEL_NAME);
     //     channel.setMethodCallHandler(new DisableBatteryOptimizationPlugin(registrar.activity(), registrar.activeContext()));
@@ -159,16 +161,11 @@ public class DisableBatteryOptimizationPlugin implements FlutterPlugin, Activity
     public void onAttachedToEngine(@NonNull FlutterPluginBinding binding) {
         channel = new MethodChannel(binding.getBinaryMessenger(), CHANNEL_NAME);
         mContext = binding.getApplicationContext();
-        channel.setMethodCallHandler(this); // Ensure this is set
     }
 
 
     @Override
     public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
-        if (channel != null){
-            channel.setMethodCallHandler(null);
-            channel = null;
-        }
     }
 
     @Override
